@@ -25,7 +25,7 @@ window.location.href = "https://t.me/iptvm3y";
 #EXTM3U
 
 #EXTINF:-1 tvg-id="1" group-title="Join @iptvm3y" group-logo="https://i.ibb.co/8qf5dPf/360-F-44121863-WAd-Mc-Mm-HP1-HKEKRc38432c-Y1r%20x-W.jpg"" tvg-logo="https://i.ibb.co/8qf5dPf/360-F-44121863-WAd-Mc-Mm-HP1-HKEKRc38432c-Y1r%20x-W.jpg" ,t.me/nubcarder
-https://rk-m3u.vercel.app/lv_0_20250818231431.mp4
+https://m3uplaylist-plum.vercel.app/m3u_playlist.m3u8
 #EXTM3U x-tvg-url="https://avkb.short.gy/jioepg.xml.gz"
 #EXTM3U x-tvg-url="https://raw.githubusercontent.com/mitthu786/tvepg/main/tataplay/epg.xml.gz"
 #EXTM3U x-tvg-url="https://tsepg.cf/jio.xml.gz"
@@ -2195,3 +2195,4 @@ https://allinonereborn.fun/opplex190.m3u8?id=389033
 https://allinonereborn.fun/opplex190.m3u8?id=389032
 #EXTINF:-1 tvg-id="389032" tvg-name="" tvg-logo="https://i.ibb.co/mCjxNDbh/PGT-1822-2.png" group-title="INDIAN | 4K ULTRA HD",SONY MAX 1
 https://allinonereborn.fun/filex/index.php?id=512328
+
