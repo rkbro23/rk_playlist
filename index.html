@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M3U Playlist Manager - Login</title>
+    <style>
+        :root {
+            --primary: #3498db;
+            --secondary: #2c3e50;
+            --success: #2ecc71;
+            --danger: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #34495e;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 450px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            color: var(--secondary);
+            margin-bottom: 10px;
+            font-size: 2.2rem;
+        }
+        
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 1rem;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border 0.3s;
+        }
+        
+        input[type="text"]:focus, input[type="password"]:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s;
+            text-align: center;
+        }
+        
+        .btn:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+        }
+        
+        .btn-block {
+            display: block;
+            width: 100%;
+        }
+        
+        .alert {
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            display: none;
+        }
+        
+        .alert-danger {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+        
+        /* App styles (hidden until login) */
+        #app {
+            display: none;
+            width: 100%;
+            max-width: 1000px;
+        }
+        
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-title {
+            color: var(--secondary);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light);
+        }
+        
+        .file-list {
+            max-height: 300px;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+        }
+        
+        .file-item {
+            padding: 12px;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+            transition: background 0.3s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .file-item:hover {
+            background: #f8f9fa;
+        }
+        
+        .file-item.active {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .file-item .badge {
+            background: var(--secondary);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+        
+        input[type="url"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border 0.3s;
+        }
+        
+        input[type="url"]:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+        
+        .btn-success {
+            background: var(--success);
+        }
+        
+        .btn-success:hover {
+            background: #27ae60;
+        }
+        
+        .btn-danger {
+            background: var(--danger);
+        }
+        
+        .btn-danger:hover {
+            background: #c0392b;
+        }
+        
+        .progress-container {
+            margin: 25px 0;
+            display: none;
+        }
+        
+        .progress-bar {
+            height: 20px;
+            background: #e9ecef;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+        
+        .progress {
+            height: 100%;
+            background: var(--success);
+            width: 0%;
+            transition: width 0.4s ease;
+        }
+        
+        .status {
+            text-align: center;
+            font-style: italic;
+            color: #6c757d;
+        }
+        
+        .url-preview {
+            margin-top: 15px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 5px;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .url-preview h4 {
+            margin-top: 0;
+            color: var(--primary);
+        }
+        
+        .url-list {
+            max-height: 150px;
+            overflow-y: auto;
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        
+        .url-item {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            font-family: monospace;
+            font-size: 0.9rem;
+        }
+        
+        .url-item:last-child {
+            border-bottom: none;
+        }
+        
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .logout-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--danger);
+        }
+        
+        .logout-btn:hover {
+            background: #c0392b;
+        }
+    </style>
+</head>
+<body>
+    <div id="login" class="container">
+        <header>
+            <h1>M3U Playlist Manager</h1>
+            <p class="subtitle">Secure Login Required</p>
+        </header>
+        
+        <div class="alert alert-danger" id="loginError">
+            Invalid username or password. Please try again.
+        </div>
+        
+        <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" id="username" placeholder="Enter your username">
+        </div>
+        
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" placeholder="Enter your password">
+        </div>
+        
+        <button class="btn btn-block" id="loginBtn">Login</button>
+        
+        <footer>
+            <p>Restricted Access &copy; 2023 | Authorized Users Only</p>
+        </footer>
+    </div>
+
+    <div id="app" class="container">
+        <button class="btn logout-btn" id="logoutBtn">Logout</button>
+        
+        <header>
+            <h1>M3U Playlist Manager</h1>
+            <p class="subtitle">Update stream URLs in your M3U playlists</p>
+        </header>
+        
+        <div class="alert alert-success" id="successAlert"></div>
+        <div class="alert alert-danger" id="errorAlert"></div>
+        
+        <div class="main-content">
+            <div class="card">
+                <h2 class="card-title">Available M3U Files</h2>
+                <div class="file-list" id="fileList">
+                    <div class="file-item">
+                        <span>playlist.m3u</span>
+                        <span class="badge">12 streams</span>
+                    </div>
+                    <div class="file-item">
+                        <span>music.m3u</span>
+                        <span class="badge">45 streams</span>
+                    </div>
+                    <div class="file-item">
+                        <span>tv_channels.m3u</span>
+                        <span class="badge">120 streams</span>
+                    </div>
+                    <div class="file-item">
+                        <span>radio.m3u</span>
+                        <span class="badge">36 streams</span>
+                    </div>
+                    <div class="file-item">
+                        <span>sports.m3u</span>
+                        <span class="badge">28 streams</span>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="newUrl">New Stream URL (M3U8/MP4/MKV/TS):</label>
+                    <input type="url" id="newUrl" placeholder="https://example.com/new-stream.m3u8">
+                </div>
+                
+                <button class="btn btn-block" id="updateBtn">Update Selected Playlist</button>
+                
+                <div class="progress-container" id="progressContainer">
+                    <div class="progress-bar">
+                        <div class="progress" id="progressBar"></div>
+                    </div>
+                    <p class="status" id="statusText">Processing playlist...</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h2 class="card-title">Playlist Information</h2>
+                
+                <div class="url-preview">
+                    <h4>Detected Stream URLs:</h4>
+                    <div class="url-list" id="urlList">
+                        <div class="url-item">http://example.com/stream1.m3u8</div>
+                        <div class="url-item">http://example.com/stream2.ts</div>
+                        <div class="url-item">http://example.com/stream3.mp4</div>
+                        <div class="url-item">http://example.com/stream4.mkv</div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="newPlaylistName">Save As (optional):</label>
+                    <input type="text" id="newPlaylistName" placeholder="Leave blank to overwrite original">
+                </div>
+                
+                <div class="action-buttons">
+                    <button class="btn btn-success" id="saveBtn">Save Changes</button>
+                    <button class="btn btn-danger" id="revertBtn">Revert Changes</button>
+                </div>
+                
+                <div class="form-group" style="margin-top: 20px;">
+                    <label for="uploadFile">Upload New M3U File:</label>
+                    <input type="file" id="uploadFile" accept=".m3u,.m3u8" style="padding: 10px; border: 1px dashed #ddd;">
+                </div>
+                
+                <button class="btn" id="uploadBtn">Upload File</button>
+            </div>
+        </div>
+        
+        <footer>
+            <p>M3U Playlist Manager &copy; 2023 | All your streaming needs in one place</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // DOM Elements
+            const loginContainer = document.getElementById('login');
+            const appContainer = document.getElementById('app');
+            const usernameInput = document.getElementById('username');
+            const passwordInput = document.getElementById('password');
+            const loginBtn = document.getElementById('loginBtn');
+            const loginError = document.getElementById('loginError');
+            const logoutBtn = document.getElementById('logoutBtn');
+            
+            const fileList = document.getElementById('fileList');
+            const newUrlInput = document.getElementById('newUrl');
+            const updateBtn = document.getElementById('updateBtn');
+            const progressContainer = document.getElementById('progressContainer');
+            const progressBar = document.getElementById('progressBar');
+            const statusText = document.getElementById('statusText');
+            const urlList = document.getElementById('urlList');
+            const newPlaylistName = document.getElementById('newPlaylistName');
+            const saveBtn = document.getElementById('saveBtn');
+            const revertBtn = document.getElementById('revertBtn');
+            const uploadFile = document.getElementById('uploadFile');
+            const uploadBtn = document.getElementById('uploadBtn');
+            const successAlert = document.getElementById('successAlert');
+            const errorAlert = document.getElementById('errorAlert');
+            
+            // Variables
+            let currentFile = null;
+            let originalContent = '';
+            let modifiedContent = '';
+            let isLoggedIn = false;
+            
+            // Check if user is already logged in (from sessionStorage)
+            if (sessionStorage.getItem('m3uLoggedIn') === 'true') {
+                showApp();
+            }
+            
+            // Event Listeners
+            loginBtn.addEventListener('click', login);
+            logoutBtn.addEventListener('click', logout);
+            
+            // Login function
+            function login() {
+                const username = usernameInput.value.trim();
+                const password = passwordInput.value.trim();
+                
+                if (username === 'rkboi' && password === '0786') {
+                    // Successful login
+                    isLoggedIn = true;
+                    sessionStorage.setItem('m3uLoggedIn', 'true');
+                    showApp();
+                    initializeApp();
+                } else {
+                    // Failed login
+                    loginError.style.display = 'block';
+                    usernameInput.style.borderColor = '#e74c3c';
+                    passwordInput.style.borderColor = '#e74c3c';
+                    
+                    // Clear fields after a delay
+                    setTimeout(() => {
+                        usernameInput.value = '';
+                        passwordInput.value = '';
+                        usernameInput.style.borderColor = '#ddd';
+                        passwordInput.style.borderColor = '#ddd';
+                    }, 1500);
+                }
+            }
+            
+            // Logout function
+            function logout() {
+                isLoggedIn = false;
+                sessionStorage.removeItem('m3uLoggedIn');
+                hideApp();
+            }
+            
+            // Show app function
+            function showApp() {
+                loginContainer.style.display = 'none';
+                appContainer.style.display = 'block';
+            }
+            
+            // Hide app function
+            function hideApp() {
+                loginContainer.style.display = 'block';
+                appContainer.style.display = 'none';
+            }
+            
+            // Initialize app after login
+            function initializeApp() {
+                // Initialize file list
+                initializeFileList();
+                
+                // Add event listeners for app functionality
+                fileList.addEventListener('click', handleFileSelect);
+                updateBtn.addEventListener('click', updatePlaylist);
+                saveBtn.addEventListener('click', saveChanges);
+                revertBtn.addEventListener('click', revertChanges);
+                uploadBtn.addEventListener('click', uploadNewFile);
+            }
+            
+            function initializeFileList() {
+                // In a real implementation, this would fetch files from the server
+                const fileItems = fileList.querySelectorAll('.file-item');
+                fileItems.forEach(item => {
+                    item.addEventListener('click', function() {
+                        fileItems.forEach(i => i.classList.remove('active'));
+                        this.classList.add('active');
+                        currentFile = this.querySelector('span:first-child').textContent;
+                        loadFileContent(currentFile);
+                    });
+                });
+                
+                // Activate the first file by default
+                if (fileItems.length > 0) {
+                    fileItems[0].click();
+                }
+            }
+            
+            function loadFileContent(filename) {
+                // Show loading state
+                progressContainer.style.display = 'block';
+                progressBar.style.width = '30%';
+                statusText.textContent = `Loading ${filename}...`;
+                
+                // Simulate loading content
+                setTimeout(() => {
+                    // In a real implementation, this would fetch the file content from the server
+                    originalContent = `#EXTM3U
+#EXTINF:-1,Channel 1
+http://example.com/stream1.m3u8
+#EXTINF:-1,Channel 2
+http://example.com/stream2.ts
+#EXTINF:-1,Channel 3
+http://example.com/stream3.mp4
+#EXTINF:-1,Channel 4
+http://example.com/stream4.mkv`;
+                    
+                    modifiedContent = originalContent;
+                    
+                    // Update URL list
+                    updateUrlList();
+                    
+                    // Complete progress
+                    progressBar.style.width = '100%';
+                    statusText.textContent = 'File loaded successfully!';
+                    
+                    // Hide progress after a delay
+                    setTimeout(() => {
+                        progressContainer.style.display = 'none';
+                    }, 1000);
+                }, 800);
+            }
+            
+            function updateUrlList() {
+                // Extract URLs from content
+                const urls = extractUrls(originalContent);
+                
+                // Update URL list display
+                urlList.innerHTML = '';
+                urls.forEach(url => {
+                    const urlItem = document.createElement('div');
+                    urlItem.className = 'url-item';
+                    urlItem.textContent = url;
+                    urlList.appendChild(urlItem);
+                });
+            }
+            
+            function extractUrls(content) {
+                const urls = [];
+                const lines = content.split('\n');
+                
+                lines.forEach(line => {
+                    const trimmed = line.trim();
+                    if (trimmed && !trimmed.startsWith('#') && 
+                        (trimmed.startsWith('http://') || tri
