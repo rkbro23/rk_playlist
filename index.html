@@ -317,17 +317,19 @@
             Invalid username or password. Please try again.
         </div>
         
-        <div class="form-group">
-            <label for="username">Username:</label>
-            <input type="text" id="username" placeholder="Enter your username">
-        </div>
-        
-        <div class="form-group">
-            <label for="password">Password:</label>
-            <input type="password" id="password" placeholder="Enter your password">
-        </div>
-        
-        <button class="btn btn-block" id="loginBtn">Login</button>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" placeholder="Enter your username" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" placeholder="Enter your password" required>
+            </div>
+            
+            <button type="submit" class="btn btn-block" id="loginBtn">Login</button>
+        </form>
         
         <footer>
             <p>Restricted Access &copy; 2023 | Authorized Users Only</p>
@@ -428,9 +430,9 @@
             // DOM Elements
             const loginContainer = document.getElementById('login');
             const appContainer = document.getElementById('app');
+            const loginForm = document.getElementById('loginForm');
             const usernameInput = document.getElementById('username');
             const passwordInput = document.getElementById('password');
-            const loginBtn = document.getElementById('loginBtn');
             const loginError = document.getElementById('loginError');
             const logoutBtn = document.getElementById('logoutBtn');
             
@@ -458,10 +460,15 @@
             // Check if user is already logged in (from sessionStorage)
             if (sessionStorage.getItem('m3uLoggedIn') === 'true') {
                 showApp();
+                initializeApp();
             }
             
             // Event Listeners
-            loginBtn.addEventListener('click', login);
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                login();
+            });
+            
             logoutBtn.addEventListener('click', logout);
             
             // Login function
@@ -508,6 +515,9 @@
             function hideApp() {
                 loginContainer.style.display = 'block';
                 appContainer.style.display = 'none';
+                // Reset login form
+                loginForm.reset();
+                loginError.style.display = 'none';
             }
             
             // Initialize app after login
@@ -539,6 +549,17 @@
                 if (fileItems.length > 0) {
                     fileItems[0].click();
                 }
+            }
+            
+            function handleFileSelect(e) {
+                const target = e.target.closest('.file-item');
+                if (!target) return;
+                
+                const fileItems = fileList.querySelectorAll('.file-item');
+                fileItems.forEach(i => i.classList.remove('active'));
+                target.classList.add('active');
+                currentFile = target.querySelector('span:first-child').textContent;
+                loadFileContent(currentFile);
             }
             
             function loadFileContent(filename) {
@@ -575,26 +596,43 @@ http://example.com/stream4.mkv`;
                     }, 1000);
                 }, 800);
             }
-            
-            function updateUrlList() {
-                // Extract URLs from content
-                const urls = extractUrls(originalContent);
-                
-                // Update URL list display
-                urlList.innerHTML = '';
-                urls.forEach(url => {
-                    const urlItem = document.createElement('div');
-                    urlItem.className = 'url-item';
-                    urlItem.textContent = url;
-                    urlList.appendChild(urlItem);
-                });
+
+                                    // Add the new file to the list
+                        const fileItems = fileList.querySelectorAll('.file-item');
+                        const newItem = document.createElement('div');
+                        newItem.className = 'file-item';
+                        newItem.innerHTML = `<span>${file.name}</span><span class="badge">0 streams</span>`;
+                        
+                        fileList.appendChild(newItem);
+                        newItem.addEventListener('click', function() {
+                            fileItems.forEach(i => i.classList.remove('active'));
+                            this.classList.add('active');
+                            currentFile = this.querySelector('span:first-child').textContent;
+                            loadFileContent(currentFile);
+                        });
+                        
+                        showSuccess(`File ${file.name} uploaded successfully`);
+                        uploadFile.value = '';
+                    }
+                }, 150);
             }
             
-            function extractUrls(content) {
-                const urls = [];
-                const lines = content.split('\n');
-                
-                lines.forEach(line => {
-                    const trimmed = line.trim();
-                    if (trimmed && !trimmed.startsWith('#') && 
-                        (trimmed.startsWith('http://') || tri
+            function showError(message) {
+                errorAlert.textContent = message;
+                errorAlert.style.display = 'block';
+                setTimeout(() => {
+                    errorAlert.style.display = 'none';
+                }, 5000);
+            }
+            
+            function showSuccess(message) {
+                successAlert.textContent = message;
+                successAlert.style.display = 'block';
+                setTimeout(() => {
+                    successAlert.style.display = 'none';
+                }, 5000);
+            }
+        });
+    </script>
+</body>
+</html>
