@@ -2,6 +2,8 @@
 #EXTINF:-1 tvg-id="" tvg-name="M3U PLAYLIST | RK" tvg-logo="https://i.ibb.co/r1swQjL/m3u-file-format-icon-m3u-extension-line-icon-free-vector.jpg" group-title="M3U PLAYLIST",M3U PLAYLIST
 https://m3uplaylist-plum.vercel.app/output.m3u8
 
+#EXTM3U
+
 #EXTINF:-1 tvg-logo="https://i.ibb.co/r1swQjL/m3u-file-format-icon-m3u-extension-line-icon-free-vector.jpg",CricLife 2 - Provided by RK
 #KODIPROP:inputstream.adaptive.manifest_type=mpd
 #KODIPROP:inputstream.adaptive.license_type=clearkey
@@ -41,39 +43,38 @@ https://a170aivottlinear-a.akamaihd.net/OTTB/bom-nitro/live/dash/enc/f60kqesunw/
 #KODIPROP:inputstream.adaptive.license_key=1779c27b9d077a3ba0c9cc1bb9a94b9f:cc5cf3b7928fb9e0a1ee6a8b566f0a8e
 https://a201aivottlinear-a.akamaihd.net/OTTB/lhr-nitro/clients/dash/enc/f60kqesunw/out/v1/a435ed7a00f947deb4369b46d8f2fb70/cenc.mpd
 
-#EXTINF:-1 tvg-logo="https://i.ibb.co/r1swQjL/m3u-file-format-icon-m3u-extension-line-icon-free-vector.jpg",Sky NZ 1 - Provided by RK
-https://sixseven.attitude.my.id/skynz1/index.m3u8
-#EXTINF:-1 tvg-logo="https://i.ibb.co/r1swQjL/m3u-file-format-icon-m3u-extension-line-icon-free-vector.jpg",Sky NZ 2 - Provided by RK
-https://sixseven.attitude.my.id/skynz2/index.m3u8
-#EXTINF:-1 tvg-logo="https://i.ibb.co/r1swQjL/m3u-file-format-icon-m3u-extension-line-icon-free-vector.jpg",Sky NZ 3 - Provided by RK
-https://sixseven.attitude.my.id/skynz3/index.m3u8
-#EXTINF:-1 tvg-logo="https://i.ibb.co/r1swQjL/m3u-file-format-icon-m3u-extension-line-icon-free-vector.jpg",Sky NZ 4 - Provided by RK
-https://sixseven.attitude.my.id/skynz4/index.m3u8
-#EXTINF:-1 tvg-logo="https://i.ibb.co/r1swQjL/m3u-file-format-icon-m3u-extension-line-icon-free-vector.jpg",Sky NZ 5 - Provided by RK
-https://sixseven.attitude.my.id/skynz5/index.m3u8
-#EXTINF:-1 tvg-logo="https://i.ibb.co/r1swQjL/m3u-file-format-icon-m3u-extension-line-icon-free-vector.jpg",Sky NZ 6 - Provided by RK
-https://sixseven.attitude.my.id/skynz6/index.m3u8
-#EXTINF:-1 tvg-logo="https://i.ibb.co/r1swQjL/m3u-file-format-icon-m3u-extension-line-icon-free-vector.jpg",Sky NZ 7 - Provided by RK
-https://sixseven.attitude.my.id/skynz7/index.m3u8
-#EXTINF:-1 tvg-logo="https://i.ibb.co/r1swQjL/m3u-file-format-icon-m3u-extension-line-icon-free-vector.jpg",Sky NZ 8 - Provided by RK
-https://sixseven.attitude.my.id/skynz8/index.m3u8
-#EXTINF:-1 tvg-logo="https://i.ibb.co/r1swQjL/m3u-file-format-icon-m3u-extension-line-icon-free-vector.jpg",Sky NZ 9 - Provided by RK
-https://sixseven.attitude.my.id/skynz9/index.m3u8
+#EXTINF:-1 tvg-logo="https://i.ibb.co/r1swQjL/m3u-file-format-icon-m3u-extension-line-icon-free-vector.jpg",BPL26 FINAL 🔥 AkkaSH Go (Auto Quality) - Provided by RK
+https://vgdjq6dyk5.gpcdn.net/bpk-tv/1707/output/index.m3u8
 
-#EXTINF:-1 tvg-logo="https://i.ibb.co/r1swQjL/m3u-file-format-icon-m3u-extension-line-icon-free-vector.jpg",U19 World Cup AUS vs IRE - Provided by RK
+#EXTINF:-1 tvg-logo="https://i.ibb.co/r1swQjL/m3u-file-format-icon-m3u-extension-line-icon-free-vector.jpg",BPL26 FINAL 🔥 Tapmad (Auto Quality) - Provided by RK
+https://premierleagpl23.akamaized.net/hls/live/2107108/Tapmad-29514-Enc-Seriea-1.3/master.m3u8
+
+#EXTINF:-1 tvg-logo="https://i.ibb.co/r1swQjL/m3u-file-format-icon-m3u-extension-line-icon-free-vector.jpg",BPL Final Rajshahi vs Chattogram - Provided by RK
 #KODIPROP:inputstream.adaptive.manifest_type=mpd
 #KODIPROP:inputstream.adaptive.license_type=clearkey
-#KODIPROP:inputstream.adaptive.license_key=b86fa94988debfa3f1dff4cfd0d45345:ab64c1dc3e8f309e61cf0c8318618f0
-https://a201aivottlinear-a.akamaihd.net/OTTB/lhr-nitro/clients/dash/enc/oc3slvlq7n/out/v1/e4b93c0e3e4d4dcb9527c5b0dfe2ae90/cenc.mpd
+#KODIPROP:inputstream.adaptive.license_key=dd0ceebec51e7fef863f31538e69e84c:09ae5e70fee6718a85a27fb8bad1b5e0
+https://ottb.live.cf.ww.aiv-cdn.net/lhr-nitro/live/clients/dash/enc/codfb0rmrr/out/v1/87e9512ea3ee419189c100d47f3f01b7/cenc.mpd
 
-#EXTINF:-1 tvg-logo="https://i.ibb.co/r1swQjL/m3u-file-format-icon-m3u-extension-line-icon-free-vector.jpg",U19 World Cup SA vs AFG - Provided by RK
+#EXTINF:-1 tvg-logo="https://i.ibb.co/r1swQjL/m3u-file-format-icon-m3u-extension-line-icon-free-vector.jpg",Willow (Alt) - Provided by RK
 #KODIPROP:inputstream.adaptive.manifest_type=mpd
 #KODIPROP:inputstream.adaptive.license_type=clearkey
-#KODIPROP:inputstream.adaptive.license_key=da661ad935054591590c7487368b26f3:10229bfa52d2e601b3e88b7951dc0bae
-https://a201aivottlinear-a.akamaihd.net/OTTB/lhr-nitro/clients/dash/enc/3horuf8yft/out/v1/3b4484f853394bc9b0793be59aaba70a/cenc.mpd
+#KODIPROP:inputstream.adaptive.license_key=7e9239c1982d984a002df3ed049d0756:1b8a17598129a3618535c8fb05f103fe
+https://a204aivottepl-a.akamaihd.net/sin-nitro/live/clients/dash/enc/fdb3pubmek/out/v1/aefca6420f944a9482e117f315de535f/cenc.mpd
 
-#EXTINF:-1 tvg-logo="https://i.ibb.co/r1swQjL/m3u-file-format-icon-m3u-extension-line-icon-free-vector.jpg",U19 World Cup PAK vs ENG - Provided by RK
+#EXTINF:-1 tvg-logo="https://i.ibb.co/r1swQjL/m3u-file-format-icon-m3u-extension-line-icon-free-vector.jpg",Sony Live Event - Provided by RK
+https://sonypartnersdaimenew.akamaized.net/hls/live/2018457/DAI35ME-ENGVSSL/master.m3u8
+
+#EXTINF:-1 tvg-logo="https://i.ibb.co/r1swQjL/m3u-file-format-icon-m3u-extension-line-icon-free-vector.jpg",Google DAI Live Event - Provided by RK
+https://dai.google.com/linear/hls/event/HynNobMPSu6nQCgpxsK0lQ/master.m3u8
+
+#EXTINF:-1 tvg-logo="https://i.ibb.co/r1swQjL/m3u-file-format-icon-m3u-extension-line-icon-free-vector.jpg",Willow HQ (Backup) - Provided by RK
 #KODIPROP:inputstream.adaptive.manifest_type=mpd
 #KODIPROP:inputstream.adaptive.license_type=clearkey
-#KODIPROP:inputstream.adaptive.license_key=f159241d40e659d58e81bc17ca30da31:6b7fe24f7a16343bd447b0b30f68b7b2
-https://a201aivottlinear-a.akamaihd.net/OTTB/lhr-nitro/clients/dash/enc/b5sgygmi5r/out/v1/450d606c6a17471f84d09372f55004e2/cenc.mpd
+#KODIPROP:inputstream.adaptive.license_key=1779c27b9d077a3ba0c9cc1bb9a94b9f:cc5cf3b7928fb9e0a1ee6a8b566f0a8e
+https://abm5x5xaaaaaaaamjgudev5k44qb3.otte.live.cf.ww.aiv-cdn.net/lhr-nitro/live/clients/dash/enc/f60kqesunw/out/v1/a435ed7a00f947deb4369b46d8f2fb70/cenc.mpd
+
+#EXTINF:-1 tvg-logo="https://i.ibb.co/r1swQjL/m3u-file-format-icon-m3u-extension-line-icon-free-vector.jpg",Cricket Live (Clearkey) - Provided by RK
+#KODIPROP:inputstream.adaptive.manifest_type=mpd
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=77cbbe03e429a079de236f53e60839d9:c62e6a34d38065b75fc4d308fc8c3ca3
+https://a201aivottlinear-a.akamaihd.net/OTTB/lhr-nitro/clients/dash/enc/smgyotbhup/out/v1/f4ff6633924f4c7ebc76de9cd9db226a/cenc.mpd
