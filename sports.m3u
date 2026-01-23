@@ -1,0 +1,79 @@
+#EXTM3U
+#EXTINF:-1 tvg-id="" tvg-name="M3U PLAYLIST | RK" tvg-logo="https://i.ibb.co/r1swQjL/m3u-file-format-icon-m3u-extension-line-icon-free-vector.jpg" group-title="M3U PLAYLIST",M3U PLAYLIST
+https://m3uplaylist-plum.vercel.app/output.m3u8
+
+#EXTINF:-1 tvg-logo="https://i.ibb.co/r1swQjL/m3u-file-format-icon-m3u-extension-line-icon-free-vector.jpg",CricLife 2 - Provided by RK
+#KODIPROP:inputstream.adaptive.manifest_type=mpd
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=48bef83b4c6a3c5189b01b0126210da4:bd085230b7b09e50954fe0af111a8a9f
+https://ev-fast-mpd.starzplayarabia.com/live/eds/CricLife2/DASH/CricLife2.mpd
+
+#EXTINF:-1 tvg-logo="https://i.ibb.co/r1swQjL/m3u-file-format-icon-m3u-extension-line-icon-free-vector.jpg",WF Cricket - Provided by RK
+#KODIPROP:inputstream.adaptive.manifest_type=mpd
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=d0f2e5c39e70c18f29bf77768a1ad89a:d6853c51fcf37a18905f0609972395d7
+https://ottb.live.cf.ww.aiv-cdn.net/bom-nitro/live/dash/enc/wf8usag51e/out/v1/bd3b0c314fff4bb1ab4693358f3cd2d3/cenc.mpd
+
+#EXTINF:-1 tvg-logo="https://i.ibb.co/r1swQjL/m3u-file-format-icon-m3u-extension-line-icon-free-vector.jpg",CricLife 3 - Provided by RK
+#KODIPROP:inputstream.adaptive.manifest_type=mpd
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=4e8b5ddac5332a4e66c002b4c0f22322:d06de29b0eacb81ac6e3f325849047e8
+https://ev-fast-mpd.starzplayarabia.com/live/eds/Criclife_3/DASH/Criclife_3.mpd
+
+#EXTINF:-1 tvg-logo="https://i.ibb.co/r1swQjL/m3u-file-format-icon-m3u-extension-line-icon-free-vector.jpg",Star Sports Hindi - Provided by RK
+http://103.140.254.2:3500/live/1998.m3u8
+
+#EXTINF:-1 tvg-logo="https://i.ibb.co/r1swQjL/m3u-file-format-icon-m3u-extension-line-icon-free-vector.jpg",FOX Cricket 501 HD - Provided by RK
+http://537c2e45.edmonst.net/iptv/XTLZN9LAR98K4Z/19146/index.m3u8
+
+#EXTINF:-1 tvg-logo="https://i.ibb.co/r1swQjL/m3u-file-format-icon-m3u-extension-line-icon-free-vector.jpg",Sky Sports Cricket - Provided by RK
+http://f4d0yznb.klaipedalt.xyz/iptv/VFF9R74ZCZFGWQLUWGD7VL6G/7343/index.m3u8
+
+#EXTINF:-1 tvg-logo="https://i.ibb.co/r1swQjL/m3u-file-format-icon-m3u-extension-line-icon-free-vector.jpg",Willow Sports - Provided by RK
+#KODIPROP:inputstream.adaptive.manifest_type=mpd
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=1779C27B9D077A3BA0C9CC1BB9A94B9F:CC5CF3B7928FB9E0A1EE6A8B566F0A8E
+https://a170aivottlinear-a.akamaihd.net/OTTB/bom-nitro/live/dash/enc/f60kqesunw/out/v1/a435ed7a00f947deb4369b46d8f2fb70/cenc.mpd
+
+#EXTINF:-1 tvg-logo="https://i.ibb.co/r1swQjL/m3u-file-format-icon-m3u-extension-line-icon-free-vector.jpg",Willow HQ - Provided by RK
+#KODIPROP:inputstream.adaptive.manifest_type=mpd
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=1779c27b9d077a3ba0c9cc1bb9a94b9f:cc5cf3b7928fb9e0a1ee6a8b566f0a8e
+https://a201aivottlinear-a.akamaihd.net/OTTB/lhr-nitro/clients/dash/enc/f60kqesunw/out/v1/a435ed7a00f947deb4369b46d8f2fb70/cenc.mpd
+
+#EXTINF:-1 tvg-logo="https://i.ibb.co/r1swQjL/m3u-file-format-icon-m3u-extension-line-icon-free-vector.jpg",Sky NZ 1 - Provided by RK
+https://sixseven.attitude.my.id/skynz1/index.m3u8
+#EXTINF:-1 tvg-logo="https://i.ibb.co/r1swQjL/m3u-file-format-icon-m3u-extension-line-icon-free-vector.jpg",Sky NZ 2 - Provided by RK
+https://sixseven.attitude.my.id/skynz2/index.m3u8
+#EXTINF:-1 tvg-logo="https://i.ibb.co/r1swQjL/m3u-file-format-icon-m3u-extension-line-icon-free-vector.jpg",Sky NZ 3 - Provided by RK
+https://sixseven.attitude.my.id/skynz3/index.m3u8
+#EXTINF:-1 tvg-logo="https://i.ibb.co/r1swQjL/m3u-file-format-icon-m3u-extension-line-icon-free-vector.jpg",Sky NZ 4 - Provided by RK
+https://sixseven.attitude.my.id/skynz4/index.m3u8
+#EXTINF:-1 tvg-logo="https://i.ibb.co/r1swQjL/m3u-file-format-icon-m3u-extension-line-icon-free-vector.jpg",Sky NZ 5 - Provided by RK
+https://sixseven.attitude.my.id/skynz5/index.m3u8
+#EXTINF:-1 tvg-logo="https://i.ibb.co/r1swQjL/m3u-file-format-icon-m3u-extension-line-icon-free-vector.jpg",Sky NZ 6 - Provided by RK
+https://sixseven.attitude.my.id/skynz6/index.m3u8
+#EXTINF:-1 tvg-logo="https://i.ibb.co/r1swQjL/m3u-file-format-icon-m3u-extension-line-icon-free-vector.jpg",Sky NZ 7 - Provided by RK
+https://sixseven.attitude.my.id/skynz7/index.m3u8
+#EXTINF:-1 tvg-logo="https://i.ibb.co/r1swQjL/m3u-file-format-icon-m3u-extension-line-icon-free-vector.jpg",Sky NZ 8 - Provided by RK
+https://sixseven.attitude.my.id/skynz8/index.m3u8
+#EXTINF:-1 tvg-logo="https://i.ibb.co/r1swQjL/m3u-file-format-icon-m3u-extension-line-icon-free-vector.jpg",Sky NZ 9 - Provided by RK
+https://sixseven.attitude.my.id/skynz9/index.m3u8
+
+#EXTINF:-1 tvg-logo="https://i.ibb.co/r1swQjL/m3u-file-format-icon-m3u-extension-line-icon-free-vector.jpg",U19 World Cup AUS vs IRE - Provided by RK
+#KODIPROP:inputstream.adaptive.manifest_type=mpd
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=b86fa94988debfa3f1dff4cfd0d45345:ab64c1dc3e8f309e61cf0c8318618f0
+https://a201aivottlinear-a.akamaihd.net/OTTB/lhr-nitro/clients/dash/enc/oc3slvlq7n/out/v1/e4b93c0e3e4d4dcb9527c5b0dfe2ae90/cenc.mpd
+
+#EXTINF:-1 tvg-logo="https://i.ibb.co/r1swQjL/m3u-file-format-icon-m3u-extension-line-icon-free-vector.jpg",U19 World Cup SA vs AFG - Provided by RK
+#KODIPROP:inputstream.adaptive.manifest_type=mpd
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=da661ad935054591590c7487368b26f3:10229bfa52d2e601b3e88b7951dc0bae
+https://a201aivottlinear-a.akamaihd.net/OTTB/lhr-nitro/clients/dash/enc/3horuf8yft/out/v1/3b4484f853394bc9b0793be59aaba70a/cenc.mpd
+
+#EXTINF:-1 tvg-logo="https://i.ibb.co/r1swQjL/m3u-file-format-icon-m3u-extension-line-icon-free-vector.jpg",U19 World Cup PAK vs ENG - Provided by RK
+#KODIPROP:inputstream.adaptive.manifest_type=mpd
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=f159241d40e659d58e81bc17ca30da31:6b7fe24f7a16343bd447b0b30f68b7b2
+https://a201aivottlinear-a.akamaihd.net/OTTB/lhr-nitro/clients/dash/enc/b5sgygmi5r/out/v1/450d606c6a17471f84d09372f55004e2/cenc.mpd
