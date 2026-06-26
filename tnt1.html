@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>(function(s){s.dataset.zone='10408286',s.src='https://al5sm.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title> live</title>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.7.11/shaka-player.ui.min.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.7.11/controls.min.css" crossorigin="anonymous">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      background: #000;
+      height: 100vh;
+      width: 100vw;
+      overflow: hidden;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+    .shaka-video-container {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+    video {
+      width: 100%;
+      height: 100%;
+      background: #000;
+      object-fit: contain;
+    }
+    .shaka-spinner-container,
+    .shaka-spinner,
+    .shaka-spinner-svg {
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+    }
+
+    /* Chrome Only Modal */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      backdrop-filter: blur(6px);
+      background: rgba(0,0,0,0.4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      animation: fadeIn .5s ease;
+    }
+    .modal.hidden { display: none !important; }
+    .modal-content {
+      background: rgba(255, 0, 0, 0.1);
+      border: 1px solid rgba(255, 0, 0, 0.3);
+      border-radius: 20px;
+      padding: 30px 25px;
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+      color: #f3f4f6;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+      backdrop-filter: blur(12px);
+      transform: scale(.95);
+      animation: scaleIn .4s ease forwards;
+    }
+    .modal-content h2 { font-size: 24px; font-weight: 700; color: #f87171; margin-bottom: 16px; }
+    .modal-content p { font-size: 16px; color: #d1d5db; margin-bottom: 24px; line-height: 1.5; }
+    @keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }
+    @keyframes scaleIn { to { transform: scale(1); opacity: 1 } }
+  </style>
+</head>
+<script src="https://troopinvariably.com/37/d7/1a/37d71a290dde379f3d1016fe3009fb4b.js"></script>
+<body>
+
+  <!-- Chrome Only Modal -->
+  <div id="chromeModal" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="modal-content">
+      <h2>Please Open in Chrome</h2>
+      <p>This site is optimized for <strong>Google Chrome</strong>. Please open the link in Chrome browser for the best experience.</p>
+    </div>
+  </div>
+
+  <div class="shaka-video-container" data-shaka-player>
+    <video autoplay playsinline preload="auto" poster=""></video>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      /********** Chrome check **********/
+      const isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+      if (!isChrome) {
+        const chromeModal = document.getElementById('chromeModal');
+        chromeModal.classList.remove('hidden');
+        chromeModal.setAttribute('aria-hidden', 'false');
+        return; // block video setup in non-Chrome
+      }
+
+      /********** Shaka player setup **********/
+      shaka.polyfill.installAll();
+
+      if (!shaka.Player.isBrowserSupported()) {
+        console.error('Browser not supported');
+      } else {
+        const video = document.querySelector('video');
+        const player = new shaka.Player();
+        await player.attach(video);
+
+        const container = document.querySelector('.shaka-video-container');
+        const ui = new shaka.ui.Overlay(player, container, video);
+
+        ui.configure({
+          controlPanelElements: [
+            'play_pause', 'time_and_duration', 'mute', 'volume',
+            'spacer', 'language', 'captions', 'picture_in_picture',
+            'quality', 'fullscreen'
+          ],
+          volumeBarColors: {
+            base: 'rgba(63, 187, 1, 1)',
+            level: 'rgb(255, 69, 0)'
+          },
+          seekBarColors: {
+            base: 'rgb(41, 41, 163)',
+            buffered: 'rgb(35, 99, 3)',
+            played: 'rgba(63, 187, 1, 1)'
+          }
+        });
+
+        let drmConfig = {
+          clearKeys: {
+            "d14658a0ede94debcb4013b2056ba6d1": "60838a3176127fed0eaf038a5575de11"
+          }
+        };
+        let cookieHeader = "";
+        let streamUrl = "https://otte.cache.aiv-cdn.net/iad-nitro/live/clients/dash/enc/vaplpo3app/out/v1/49b4d538ec854efa90d45084866cf7f9/cenc.mpd";
+
+        try {
+          const response = await fetch('');
+          const m3uText = await response.text();
+          const lines = m3uText.split('\n');
+
+          for (let i = 0; i < lines.length; i++) {
+            if (lines[i].includes('Star_Sports_HD1')) {
+              for (let j = i - 1; j >= 0; j--) {
+                if (lines[j].startsWith('#EXTHTTP:')) {
+                  const cookieMatch = lines[j].match(/"cookie":"([^"]+)"/);
+                  if (cookieMatch) {
+                    cookieHeader = cookieMatch[1];
+                  }
+                  break;
+                }
+              }
+              break;
+            }
+          }
+        } catch (error) {
+          console.error('Failed to fetch M3U:', error);
+        }
+
+        // FIXED: Enhanced prebuffer configuration for non-stop streaming
+        player.configure({
+          drm: drmConfig,
+          streaming: {
+            lowLatencyMode: true,
+            bufferingGoal: 60,           // Increased from 15 to 60 seconds
+            rebufferingGoal: 20,          // Increased from 2 to 20 seconds
+            bufferBehind: 30,              // Increased from 15 to 30 seconds
+            alwaysStreaming: true,         // Enable always streaming mode
+            retryParameters: { 
+              timeout: 15000,               // Increased from 10000 to 15000
+              maxAttempts: 10,               // Increased from 5 to 10
+              baseDelay: 500,                 // Increased from 300 to 500
+              backoffFactor: 1.5              // Increased from 1.2 to 1.5
+            },
+            segmentRequestTimeout: 15000,    // Increased from 8000 to 15000
+            segmentPrefetchLimit: 10,         // Increased from 2 to 10
+            useNativeHlsOnSafari: true,
+            smallGapLimit: 0.5,               // Add small gap handling
+            jumpLargeGaps: true,               // Jump large gaps instead of stalling
+            stallEnabled: true,                 // Enable stall detection
+            stallThreshold: 2,                   // Stall threshold in seconds
+            rebufferingEnabled: true,             // Enable rebuffering
+            durationBackoff: 1,                    // Duration backoff
+            ignoreTextStreamFailures: true,         // Ignore text stream failures
+            ignoreManifestUpdateFailures: true,      // Ignore manifest update failures
+            manifestUpdateRetryParameters: {
+              timeout: 10000,
+              maxAttempts: 5
+            }
+          },
+          manifest: { 
+            retryParameters: { 
+              timeout: 15000,               // Increased from 8000 to 15000
+              maxAttempts: 10,                // Increased from 3 to 10
+              backoffFactor: 1.5
+            },
+            dash: {
+              ignoreMinBufferTime: true,      // Ignore min buffer time from manifest
+              autoCorrectDrift: true,          // Auto correct drift
+              initialSegmentLimit: 2000         // Increased segment limit
+            }
+          },
+          offline: {
+            usePersistentLicense: false
+          },
+          abr: {
+            enabled: true,
+            defaultBandwidthEstimate: 8000000,  // 8 Mbps default bandwidth
+            switchInterval: 2,                     // Check ABR every 2 seconds
+            bandwidthUpgradeTarget: 0.7,            // Upgrade at 70% usage
+            bandwidthDowngradeTarget: 0.5,           // Downgrade at 50% usage
+            restrictions: {
+              minWidth: 320,
+              maxWidth: 1920,
+              minHeight: 240,
+              maxHeight: 1080,
+              minPixels: 76800,
+              maxPixels: 2073600
+            }
+          }
+        });
+
+        player.getNetworkingEngine().registerRequestFilter((type, request) => {
+          request.headers['Referer'] = 'https://live-pv-ta.amazon.fastly-edge.com/';
+          request.headers['User-Agent'] = "plaYtv/7.1.5 (Linux;Android 13) ExoPlayerLib/2.11.6";
+          request.headers['Cookie'] = cookieHeader;
+          request.headers['Connection'] = 'keep-alive';  // Add keep-alive header
+          request.headers['Keep-Alive'] = 'timeout=60';   // Keep connection alive
+
+          if (
+            (type === shaka.net.NetworkingEngine.RequestType.MANIFEST ||
+             type === shaka.net.NetworkingEngine.RequestType.SEGMENT) &&
+            request.uris[0] && !request.uris[0].includes('__hdnea__=')
+          ) {
+            const separator = request.uris[0].includes('?') ? '&' : '?';
+            request.uris[0] += separator + cookieHeader;
+          }
+        });
+
+        // FIXED: Add error handling and auto-recovery
+        player.addEventListener('error', (event) => {
+          console.error('Player error:', event.detail);
+          
+          // Attempt to recover from error
+          if (event.detail && event.detail.type === shaka.util.Error.Severity.RECOVERABLE) {
+            console.log('Attempting to recover from error...');
+            player.load(streamUrl).catch(e => {
+              console.error('Recovery failed:', e);
+              // Retry after 3 seconds
+              setTimeout(() => {
+                player.load(streamUrl).catch(console.error);
+              }, 3000);
+            });
+          }
+        });
+
+        // FIXED: Add buffering event handling
+        video.addEventListener('waiting', () => {
+          console.log('Buffering...');
+          // Force rebuffer if stuck
+          if (player) {
+            player.getConfiguration().streaming.rebufferingGoal = 30;
+          }
+        });
+
+        video.addEventListener('playing', () => {
+          console.log('Playing smoothly');
+        });
+
+        // FIXED: Add stall detection and recovery
+        let stallTimeout;
+        video.addEventListener('stalled', () => {
+          console.log('Stream stalled, attempting recovery...');
+          if (stallTimeout) clearTimeout(stallTimeout);
+          stallTimeout = setTimeout(() => {
+            if (video.readyState < 3) { // HAVE_FUTURE_DATA
+              video.load(); // Reload video element
+              player.load(streamUrl).catch(console.error);
+            }
+          }, 5000);
+        });
+
+        try {
+          await player.load(streamUrl);
+          console.log('Stream loaded successfully');
+          
+          // FIXED: Periodic buffer check
+          setInterval(() => {
+            if (video && player) {
+              const buffered = video.buffered;
+              if (buffered.length > 0) {
+                const currentTime = video.currentTime;
+                const bufferedEnd = buffered.end(buffered.length - 1);
+                const bufferAhead = bufferedEnd - currentTime;
+                
+                // If buffer is low, force more buffering
+                if (bufferAhead < 10) {
+                  console.log('Low buffer detected:', bufferAhead.toFixed(2), 'seconds');
+                  player.configure({ streaming: { bufferingGoal: 60 } });
+                }
+              }
+            }
+          }, 10000); // Check every 10 seconds
+          
+        } catch (error) {
+          console.error('Load error:', error);
+          // Retry loading after 5 seconds
+          setTimeout(() => {
+            player.load(streamUrl).catch(console.error);
+          }, 5000);
+        }
+      }
+    });
+  </script>
+  
+
+</body>
+<script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool@latest'></script>
+<script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool@latest'></script>
+</html>
